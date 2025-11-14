@@ -1,15 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Counter Game</title>
+  <style>
+    body {
+      font-family: Arial, sans‑serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    #counter {
+      font-size: 4rem;
+      margin: 20px 0;
+      color: #333;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      margin: 5px;
+      cursor: pointer;
+    }
+    #message {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Click Counter Game</h1>
+  <div id="counter">0</div>
+  <button id="clickBtn">Click Me!</button>
+  <button id="resetBtn">Reset</button>
+  <div id="message"></div>
 
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>浏览器FPS游戏制作</title>
-    </head>
+  <script>
+    let count = 0;
+    const counterEl = document.getElementById('counter');
+    const clickBtn = document.getElementById('clickBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const messageEl = document.getElementById('message');
 
-    <body>
-      <div id="root"></div>
-      <script type="module" src="/src/main.tsx"></script>
-    </body>
-  </html>
-  
+    clickBtn.addEventListener('click', () => {
+      count++;
+      counterEl.textContent = count;
+      messageEl.textContent = `You have clicked ${count} time${count === 1 ? '' : 's'}.`;
+    });
+
+    resetBtn.addEventListener('click', () => {
+      count = 0;
+      counterEl.textContent = count;
+      messageEl.textContent = 'Counter reset.';
+    });
+  </script>
+</body>
+</html>
